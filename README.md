@@ -26,7 +26,7 @@
 
 ## 👁️ Dashboard Preview
 
-[![VAXINX Dashboard](assets/preview.png)](https://regislara-byte.github.io/vaxinx-cert-dashboard/)
+[![VAXINX Dashboard](assets/preview.jpeg)](https://regislara-byte.github.io/vaxinx-cert-dashboard/)
 
 ---
 
@@ -81,6 +81,7 @@ vaxinx-cert-dashboard/
     ├── vaxinxseal.png                  ← VAXINX brand seal
     ├── introduction-to-cybersecurity.png
     └── certificate.pdf
+    └── preview.jpeg
 ```
 
 **In-progress modules:**
