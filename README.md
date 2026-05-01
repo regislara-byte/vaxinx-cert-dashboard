@@ -2,7 +2,7 @@
 
 <img src="assets/vaxinxseal.png" width="160" alt="VAXINX Seal" />
 
-```[![Status](...)](https://github.com/regislara-byte)
+```[![Status](...)](https://github.com/regislara-byte)```
 
 **VAXINX Protocol™** — Cybersecurity Portfolio & Defensive System
 
