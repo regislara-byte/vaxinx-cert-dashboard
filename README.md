@@ -2,13 +2,7 @@
 
 <img src="assets/vaxinxseal.png" width="160" alt="VAXINX Seal" />
 
-```
-██╗   ██╗ █████╗ ██╗  ██╗██╗███╗   ██╗██╗  ██╗
-██║   ██║██╔══██╗╚██╗██╔╝██║████╗  ██║╚██╗██╔╝
-██║   ██║███████║ ╚███╔╝ ██║██╔██╗ ██║ ╚███╔╝ 
-╚██╗ ██╔╝██╔══██║ ██╔██╗ ██║██║╚██╗██║ ██╔██╗ 
- ╚████╔╝ ██║  ██║██╔╝ ██╗██║██║ ╚████║██╔╝ ██╗
-  ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝
+```[![Status](...)](https://github.com/regislara-byte)
 ```
 
 **VAXINX Protocol™** — Cybersecurity Portfolio & Defensive System
@@ -16,11 +10,23 @@
 [![Credly](https://img.shields.io/badge/Credly-Verified-00d9ff?style=flat-square&logo=credly&logoColor=white)](https://www.credly.com/users/regis-lara)
 [![Cisco](https://img.shields.io/badge/Cisco_NetAcad-Certified-1BA0D7?style=flat-square&logo=cisco&logoColor=white)](https://www.credly.com/users/regis-lara)
 [![Python](https://img.shields.io/badge/Python-In_Progress-ffd700?style=flat-square&logo=python&logoColor=white)](https://github.com/regis-lara)
-[![Status](https://img.shields.io/badge/Status-Actively_Building-39ff9a?style=flat-square)](#)
+[Status](https://img.shields.io/badge/Status-Actively_Building-39ff9a?style=flat-square)
 
 > `think_like_attacker → act_like_defender`
 
 </div>
+
+---
+
+## 🌐 Live Preview
+
+👉 [Open VAXINX Dashboard](https://regislara-byte.github.io/vaxinx-cert-dashboard/)
+
+---
+
+## 👁️ Dashboard Preview
+
+[![VAXINX Dashboard](assets/preview.png)](https://regislara-byte.github.io/vaxinx-cert-dashboard/)
 
 ---
 
