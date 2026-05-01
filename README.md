@@ -2,8 +2,6 @@
 
 <img src="assets/vaxinxseal.png" width="160" alt="VAXINX Seal" />
 
-```[![Status](...)](https://github.com/regislara-byte)```
-
 **VAXINX Protocol™** — Cybersecurity Portfolio & Defensive System
 
 [![Credly](https://img.shields.io/badge/Credly-Verified-00d9ff?style=flat-square&logo=credly&logoColor=white)](https://www.credly.com/users/regis-lara)
