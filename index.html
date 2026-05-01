@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regis Lara — VAXINX Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:        #050d18;
+      --surface:   #0a1625;
+      --surface2:  #0f1f33;
+      --border:    rgba(0, 230, 255, 0.18);
+      --accent:    #00e5ff;
+      --accent2:   #39ff9a;
+      --accent3:   #ff4d6d;
+      --text:      #d6f0f8;
+      --muted:     #5a8a9a;
+      --mono:      'Space Mono', monospace;
+      --sans:      'DM Sans', sans-serif;
+      --display:   'Orbitron', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ── GRID BG ── */
+    .grid-bg {
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      padding: 80px 20px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 60%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(0,229,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.1s ease forwards;
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(28px, 6vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.25s ease forwards;
+    }
+
+    .header-sub {
+      margin-top: 16px;
+      font-size: 15px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.4s ease forwards;
+    }
+
+    .header-sub span {
+      color: var(--accent2);
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    /* ── NAV PILLS ── */
+    .nav-pills {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.55s ease forwards;
+    }
+
+    .pill {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: all 0.25s;
+      cursor: default;
+    }
+
+    .pill:hover, .pill.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0,229,255,0.05);
+    }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── CERT CARD ── */
+    .cert-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s 0.6s ease forwards;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .cert-card:hover {
+      border-color: rgba(0,229,255,0.4);
+      box-shadow: 0 0 40px rgba(0,229,255,0.08);
+    }
+
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), transparent);
+    }
+
+    .cert-badge-wrap {
+      width: 120px;
+    }
+
+    .cert-badge-wrap img {
+      width: 120px;
+      border-radius: 16px;
+      display: block;
+      filter: drop-shadow(0 0 16px rgba(0,229,255,0.3));
+    }
+
+    .verified-dot {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .verified-dot::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent2);
+      box-shadow: 0 0 8px var(--accent2);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .cert-info h2 {
+      font-family: var(--display);
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .cert-issuer {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .cert-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #7faab8;
+      margin-bottom: 20px;
+      max-width: 520px;
+    }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .skill-chip {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(57,255,154,0.25);
+      color: var(--accent2);
+      background: rgba(57,255,154,0.05);
+      letter-spacing: 0.5px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 9px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 20px rgba(0,229,255,0.4);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── STATUS CARDS GRID ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
+    .status-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.6s ease forwards;
+      transition: border-color 0.3s;
+    }
+
+    .status-card:nth-child(1) { animation-delay: 0.7s; }
+    .status-card:nth-child(2) { animation-delay: 0.85s; }
+
+    .status-card:hover {
+      border-color: rgba(0,229,255,0.3);
+    }
+
+    .status-card .corner-accent {
+      position: absolute;
+      top: 0; right: 0;
+      width: 60px; height: 60px;
+      background: radial-gradient(circle at top right, rgba(0,229,255,0.08), transparent 70%);
+    }
+
+    .status-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .tag-progress {
+      background: rgba(255,200,0,0.1);
+      color: #ffd700;
+      border: 1px solid rgba(255,200,0,0.2);
+    }
+
+    .tag-active {
+      background: rgba(255,77,109,0.1);
+      color: var(--accent3);
+      border: 1px solid rgba(255,77,109,0.2);
+    }
+
+    .status-card h3 {
+      font-family: var(--display);
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .status-card p {
+      font-size: 13px;
+      color: #5a8a9a;
+      line-height: 1.7;
+    }
+
+    /* ── ACHIEVEMENT BREAKDOWN ── */
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .ach-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .ach-card:nth-child(1) { animation-delay: 0.65s; }
+    .ach-card:nth-child(2) { animation-delay: 0.75s; }
+    .ach-card:nth-child(3) { animation-delay: 0.85s; }
+    .ach-card:nth-child(4) { animation-delay: 0.95s; }
+    .ach-card:nth-child(5) { animation-delay: 1.05s; }
+
+    .ach-card:hover {
+      border-color: rgba(0,229,255,0.35);
+      box-shadow: 0 0 24px rgba(0,229,255,0.07);
+    }
+
+    .ach-type {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .ach-type.type-badge  { color: #00e5ff; }
+    .ach-type.type-cert   { color: #b794f4; }
+    .ach-type.type-ach    { color: var(--accent2); }
+
+    .ach-icon {
+      font-size: 26px;
+      line-height: 1;
+      margin: 4px 0 2px;
+    }
+
+    .ach-name {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      color: #d6f0f8;
+      line-height: 1.3;
+    }
+
+    .ach-source {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .ach-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+    }
+
+    .ach-card.type-badge-card::after  { background: linear-gradient(90deg, #00e5ff, transparent); }
+    .ach-card.type-cert-card::after   { background: linear-gradient(90deg, #b794f4, transparent); }
+    .ach-card.type-ach-card::after    { background: linear-gradient(90deg, var(--accent2), transparent); }
+
+    /* ── TERMINAL BLOCKS ── */
+    .terminal-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.6s 1s ease forwards;
+    }
+
+    .terminal-bar {
+      background: var(--surface2);
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #ffbd2e; }
+    .dot-g { background: #28ca41; }
+
+    .terminal-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-left: 8px;
+      letter-spacing: 1px;
+    }
+
+    .terminal-body {
+      padding: 24px 28px;
+    }
+
+    .term-line {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .term-line:last-child { margin-bottom: 0; }
+
+    .term-prompt {
+      color: var(--accent);
+      font-size: 12px;
+      min-width: 12px;
+    }
+
+    .term-key {
+      color: #7faab8;
+      min-width: 180px;
+    }
+
+    .term-eq { color: var(--muted); }
+
+    .term-val { color: var(--accent2); }
+
+    /* ── MINDSET BLOCK ── */
+    .mindset {
+      text-align: center;
+      padding: 50px 20px;
+      font-family: var(--display);
+      font-size: clamp(16px, 3vw, 26px);
+      font-weight: 700;
+      color: rgba(255,255,255,0.08);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.2s ease forwards;
+    }
+
+    .mindset span {
+      color: var(--accent);
+      text-shadow: 0 0 30px rgba(0,229,255,0.4);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 20px;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── SEAL ── */
+    .seal-wrap {
+      margin: 0 auto 24px;
+      width: 130px;
+      height: 130px;
+      position: relative;
+      opacity: 0;
+      animation: fadeUp 0.8s 0s ease forwards, sealFloat 6s 1s ease-in-out infinite;
+    }
+
+    .seal-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 18px rgba(255, 140, 0, 0.55))
+              drop-shadow(0 0 40px rgba(255, 100, 0, 0.25));
+      transition: filter 0.3s;
+    }
+
+    .seal-wrap:hover img {
+      filter: drop-shadow(0 0 28px rgba(255, 160, 0, 0.8))
+              drop-shadow(0 0 60px rgba(255, 100, 0, 0.4));
+    }
+
+    @keyframes sealFloat {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-7px); }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .cert-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .cert-badge-wrap {
+        width: 90px;
+      }
+      .cert-badge-wrap img { width: 90px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<header>
+  <div class="hero-glow"></div>
+  <div class="seal-wrap">
+    <img src="assets/vaxinxseal.png" alt="VAXINX Seal">
+  </div>
+  <div class="header-tag">// Cybersecurity Portfolio v2.0</div>
+  <h1>VAXINX<br>Protocol</h1>
+  <p class="header-sub">Regis Lara &nbsp;·&nbsp; <span>think_like_attacker → act_like_defender</span></p>
+  <div class="nav-pills">
+    <span class="pill active">Certifications</span>
+    <span class="pill">Python Track</span>
+    <span class="pill">Active Builds</span>
+    <span class="pill">Skill Map</span>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- CERTIFICATIONS -->
+  <p class="section-label">01 — Verified Credentials</p>
+
+  <div class="cert-card">
+    <div class="cert-badge-wrap">
+      <img src="assets/introduction-to-cybersecurity.png" alt="Cisco Introduction to Cybersecurity Badge">
+      <div class="verified-dot">Verified</div>
+    </div>
+    <div class="cert-info">
+      <p class="cert-issuer">Cisco Networking Academy · May 01, 2026</p>
+      <h2>Introduction to Cybersecurity</h2>
+      <p class="cert-desc">
+        Foundation credential covering cyber threats, safe online practices,
+        organizational risk mitigation, network defense, and system safeguards.
+        Proficient in explaining attack vectors, vulnerability types, and career pathways in cybersecurity.
+      </p>
+      <div class="skills-row">
+        <span class="skill-chip">🧠 Resource Specialist</span>
+        <span class="skill-chip">🛡️ Network Defense</span>
+        <span class="skill-chip">🔐 System Safeguards</span>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://www.credly.com/users/regis-lara" target="_blank">Credly Profile ↗</a>
+        <a class="btn btn-ghost" href="assets/certificate.pdf" target="_blank">Certificate PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS BREAKDOWN -->
+  <p class="section-label">01b — Latest Achievements</p>
+
+  <div class="achievement-grid">
+
+    <div class="ach-card type-badge-card">
+      <span class="ach-type type-badge">Course Badge</span>
+      <div class="ach-icon">🎖️</div>
+      <div class="ach-name">Introduction to Cybersecurity</div>
+      <div class="ach-source">📖 Intro to Cybersecurity</div>
+    </div>
+
+    <div class="ach-card type-cert-card">
+      <span class="ach-type type-cert">Certificate</span>
+      <div class="ach-icon">📜</div>
+      <div class="ach-name">Introduction to Cybersecurity</div>
+      <div class="ach-source">📖 Intro to Cybersecurity</div>
+    </div>
+
+    <div class="ach-card type-ach-card">
+      <span class="ach-type type-ach">Achievement</span>
+      <div class="ach-icon">🧠</div>
+      <div class="ach-name">Resource Specialist</div>
+      <div class="ach-source">📖 Intro to Cybersecurity</div>
+    </div>
+
+    <div class="ach-card type-ach-card">
+      <span class="ach-type type-ach">Achievement</span>
+      <div class="ach-icon">🛡️</div>
+      <div class="ach-name">Network Defense</div>
+      <div class="ach-source">📖 Intro to Cybersecurity</div>
+    </div>
+
+    <div class="ach-card type-ach-card">
+      <span class="ach-type type-ach">Achievement</span>
+      <div class="ach-icon">🔐</div>
+      <div class="ach-name">System Safeguards</div>
+      <div class="ach-source">📖 Intro to Cybersecurity</div>
+    </div>
+
+  </div>
+
+  <!-- IN PROGRESS -->
+  <p class="section-label">02 — In Progress</p>
+
+  <div class="cards-grid">
+    <div class="status-card">
+      <div class="corner-accent"></div>
+      <span class="status-tag tag-progress">In Progress</span>
+      <h3>Python Essentials 1</h3>
+      <p>Building Python foundations for scanners, SIEM-lite logs, DLP checks, JSON reports, and dashboard automation.</p>
+    </div>
+    <div class="status-card">
+      <div class="corner-accent"></div>
+      <span class="status-tag tag-active">Active Build</span>
+      <h3>Defensive Scanner System</h3>
+      <p>File scanner + stoplight risk logic + mini SIEM/DLP concept for educational defensive cybersecurity tooling.</p>
+    </div>
+  </div>
+
+  <!-- SKILL MAP TERMINAL -->
+  <p class="section-label">03 — Skill Extraction</p>
+
+  <div class="terminal-section">
+    <div class="terminal-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <span class="terminal-label">skill_map.py — VAXINX</span>
+    </div>
+    <div class="terminal-body">
+      <div class="term-line">
+        <span class="term-prompt">›</span>
+        <span class="term-key">resource_specialist</span>
+        <span class="term-eq">=</span>
+        <span class="term-val">knowledge_base</span>
+      </div>
+      <div class="term-line">
+        <span class="term-prompt">›</span>
+        <span class="term-key">network_defense</span>
+        <span class="term-eq">=</span>
+        <span class="term-val">detect + block + monitor</span>
+      </div>
+      <div class="term-line">
+        <span class="term-prompt">›</span>
+        <span class="term-key">system_safeguards</span>
+        <span class="term-eq">=</span>
+        <span class="term-val">protect + control + policy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ONE-LINERS TERMINAL -->
+  <p class="section-label">04 — One-Liner Locks</p>
+
+  <div class="terminal-section">
+    <div class="terminal-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <span class="terminal-label">locks.sh — VAXINX Protocol</span>
+    </div>
+    <div class="terminal-body">
+      <div class="term-line">
+        <span class="term-prompt">$</span>
+        <span class="term-key">IDS</span>
+        <span class="term-eq">=</span>
+        <span class="term-val">detect</span>
+      </div>
+      <div class="term-line">
+        <span class="term-prompt">$</span>
+        <span class="term-key">IPS</span>
+        <span class="term-eq">=</span>
+        <span class="term-val">block</span>
+      </div>
+      <div class="term-line">
+        <span class="term-prompt">$</span>
+        <span class="term-key">SIEM</span>
+        <span class="term-eq">=</span>
+        <span class="term-val">analyze_logs</span>
+      </div>
+      <div class="term-line">
+        <span class="term-prompt">$</span>
+        <span class="term-key">DLP</span>
+        <span class="term-eq">=</span>
+        <span class="term-val">protect_data</span>
+      </div>
+      <div class="term-line">
+        <span class="term-prompt">$</span>
+        <span class="term-key">risk</span>
+        <span class="term-eq">=</span>
+        <span class="term-val">probability * impact</span>
+      </div>
+      <div class="term-line">
+        <span class="term-prompt">$</span>
+        <span class="term-key">security</span>
+        <span class="term-eq">=</span>
+        <span class="term-val">prevent → detect → respond → recover</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MINDSET -->
+  <div class="mindset">
+    <span>think_like_attacker</span> → act_like_defender
+  </div>
+
+</main>
+
+<footer>
+  <a href="https://www.credly.com/users/regis-lara">credly/regis-lara</a>
+  &nbsp;·&nbsp; VAXINX Protocol™ &nbsp;·&nbsp; Regis Lara &nbsp;·&nbsp; 2026
+</footer>
+
+</body>
+</html>
