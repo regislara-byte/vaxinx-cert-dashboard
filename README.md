@@ -135,7 +135,7 @@ security = prevent → detect → respond → recover
 
 ## 🔄 VAXINX Reverse Learning Method
 
-> think_like_attacker → act_like_defender
+<code>think_like_attacker → act_like_defender</code>
 
 A practical approach where systems are built first, then mapped back to theory for deeper understanding.
 
