@@ -9,7 +9,9 @@
 [![Python](https://img.shields.io/badge/Python-In_Progress-ffd700?style=flat-square&logo=python&logoColor=white)](https://github.com/regis-lara)
 [Status](https://img.shields.io/badge/Status-Actively_Building-39ff9a?style=flat-square)
 
-> `think_like_attacker → act_like_defender`
+<p align="center">
+  <code>think_like_attacker → act_like_defender</code>
+</p>
 
 </div>
 
