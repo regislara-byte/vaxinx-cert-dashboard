@@ -3,7 +3,7 @@ title VAXINX Git Deploy
 color 0A
 
 echo ==================================
-echo Deploying: VAXINX Password Analyzer
+echo Deploying: VAXINX Cert Dashboard
 echo ==================================
 echo.
 
@@ -33,6 +33,10 @@ if errorlevel 1 (
 echo.
 echo Pushing to GitHub...
 git push
+
+echo Opening live site...
+timeout /t 2 >nul
+start https://regislara-byte.github.io/vaxinx-cert-dashboard/
 
 echo.
 echo ==================================
