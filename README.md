@@ -56,8 +56,7 @@ Status  : ✅ Verified
 **Latest achievements unlocked:**
 
 | Type | Name | Course |
-|------|------|--------|
-
+|---|---|---|
 | 🎖️ Course Badge| Introduction to Cybersecurity | Intro to Cybersecurity |
 | 📜 Certificate | Introduction to Cybersecurity | Intro to Cybersecurity |
 | 🧠 Achievement | Resource Specialist | Intro to Cybersecurity |
