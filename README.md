@@ -62,6 +62,8 @@ Status  : ✅ Verified
 | 🧠 Achievement | Resource Specialist | Intro to Cybersecurity |
 | 🛡️ Achievement | Network Defense | Intro to Cybersecurity |
 | 🔐 Achievement | System Safeguards | Intro to Cybersecurity |
+| 🧠 Achievement | Threat Analysis | Intro to Cybersecurity |
+| 🛡️ Achievement | Cybersecurity Administration | Intro to Cybersecurity |
 
 🔗 [`credly.com/users/regis-lara`](https://www.credly.com/users/regis-lara)
 
@@ -77,9 +79,17 @@ vaxinx-cert-dashboard/
 └── assets/
     ├── vaxinxseal.png                  ← VAXINX brand seal
     ├── introduction-to-cybersecurity.png
+    └── achievements.jpeg
     └── certificate.pdf
     └── preview.jpeg
 ```
+
+## 📊 Learning Progress
+
+| Track | Status |
+|------|--------|
+| Cisco Intro to Cybersecurity | ✅ Completed |
+| Python Essentials 1 | 🟡 In Progress |
 
 **In-progress modules:**
 
