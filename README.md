@@ -131,10 +131,18 @@ security = prevent → detect → respond → recover
 
 ---
 
-## 🔥 Mindset
+## 🔄 VAXINX Reverse Learning Method
 
-```
-learning + proof + build = unstoppable_growth
+> think_like_attacker → act_like_defender
+
+A practical approach where systems are built first, then mapped back to theory for deeper understanding.
+
+---
+
+### 🧠 Workflow
+
+```txt
+BUILD → TEST → BREAK → UNDERSTAND → IMPROVE → DEPLOY
 ```
 
 ---
