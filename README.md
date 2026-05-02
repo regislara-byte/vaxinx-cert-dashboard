@@ -10,7 +10,10 @@
 [Status](https://img.shields.io/badge/Status-Actively_Building-39ff9a?style=flat-square)
 
 <p align="center">
-    <img src="https://img.shields.io/badge/think_like_attacker-→_act_like_defender-00d9ff?style=for-the-badge&labelColor=111827">
+  <strong>
+    <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;">THINK LIKE ATTACKER</span>
+    <span style="background:#06b6d4;color:#001018;padding:6px 12px;">→ ACT LIKE DEFENDER</span>
+  </strong>
 </p>
 
 </div>
@@ -136,7 +139,10 @@ security = prevent → detect → respond → recover
 ## 🔄 VAXINX Reverse Learning Method
 
 <p align="center">
-  <img src="https://img.shields.io/badge/think_like_attacker-→_act_like_defender-00d9ff?style=for-the-badge&labelColor=111827">
+  <strong>
+    <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;">THINK LIKE ATTACKER</span>
+    <span style="background:#06b6d4;color:#001018;padding:6px 12px;">→ ACT LIKE DEFENDER</span>
+  </strong>
 </p>
 
 A practical approach where systems are built first, then mapped back to theory for deeper understanding.
