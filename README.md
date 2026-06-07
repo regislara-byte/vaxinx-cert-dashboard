@@ -74,6 +74,26 @@ Status  : ✅ Verified
 
 ---
 
+### NVIDIA Academy — AI for All: From Basics to GenAI Practice
+
+```
+Holder  : Regis Lara
+Issued  : June 07, 2026
+Score   : 100% (Completion Quiz)
+Status  : ✅ Verified
+```
+
+**Achievements unlocked:**
+
+| Type | Name | Course |
+|---|---|---|
+| 📜 Certificate | AI for All: From Basics to GenAI Practice | NVIDIA Academy |
+| ⚡ Achievement | GenAI Practitioner | NVIDIA Academy |
+
+**Skills covered:** Generative AI · Foundation Models · LLMs · GPU Acceleration · AI Factories · Agentic AI · Physical AI
+
+---
+
 ## 🛠️ Active Builds (VAXINX System)
 
 Certifications applied — not just collected.
@@ -84,8 +104,10 @@ vaxinx-cert-dashboard/
 └── assets/
     ├── vaxinxseal.png                  ← VAXINX brand seal
     ├── introduction-to-cybersecurity.png
-    └── achievements.jpeg
-    └── certificate.pdf
+    ├── nvidia-ai-for-all-preview.png
+    ├── achievements.jpeg
+    ├── certificate.pdf
+    ├── nvidia-ai-for-all-certificate.pdf
     └── preview.jpeg
 ```
 
@@ -94,6 +116,7 @@ vaxinx-cert-dashboard/
 | Track | Status |
 |------|--------|
 | Cisco Intro to Cybersecurity | ✅ Completed |
+| NVIDIA AI for All: From Basics to GenAI Practice | ✅ Completed (100%) |
 | Python Essentials 1 | 🟡 In Progress |
 
 **In-progress modules:**
